@@ -17,14 +17,15 @@ func main(){
 	//2. Input salary (Float)
 	fmt.Print("Enter your salary: ")
 	scanner.Scan()
-	salaryStr := scanner.Text()
-	salary, _ := strconv.ParseFloat(salaryStr, 64)
+	salaryStr := scanner.Text() 
+	salary, _ := strconv.ParseFloat(salaryStr, 64) 
 	
 	//3. Input age (Int)
 	fmt.Print("Enter your age: ")
 	scanner.Scan()
 	ageStr := scanner.Text()
-	age, _ := strconv.ParseInt(ageStr, 64)
+	//Berdasarkan dokumentasi resminya, struktur fungsinya adalah:strconv.ParseInt(s string, base int, bitSize int)
+	age, _ := strconv.ParseInt(ageStr, 10, 64)
 
 	//Output
 	fmt.Println("--- Employee Details ---")

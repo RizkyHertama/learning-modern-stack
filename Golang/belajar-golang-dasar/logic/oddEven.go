@@ -7,5 +7,23 @@ import (
 )
 
 func main(){
-	var
+	scanner := bufio.NewScanner(os.Stdin)
+
+	fmt.Print("Input angka : ")	
+	scanner.Scan()
+	angkaStr := scanner.Text()
+	angka, err := strconv.ParseInt(angkaStr, 10,64)
+
+	if err != nil {
+		fmt.Println("Input bukan angka yang valid!")
+		return
+	}
+
+	if angka % 2 == 0{
+		fmt.Println("Genap")
+	}else{
+		fmt.Println("Ganjil")
+	}
+
+
 }
