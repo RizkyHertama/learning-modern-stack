@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"time"
 	dto "user-service/src/common/dto/request"
+	"user-service/src/common/dto/response"
 	"user-service/src/factory"
 	"user-service/src/restful/service"
 
@@ -39,7 +40,5 @@ func (h *Auth) Register(c *fiber.Ctx) error {
 		Expires: time.Now().Add(30 * time.Minute),
 	})
 
-	return c.JSON(fiber.Map{
-		"email": email,
-	})
+	return c.Status(200).JSON(response.Common{Message: "request success, please check your email for otp"})
 }
