@@ -29,13 +29,13 @@ func NewRestful(f *factory.Factory) *Restful {
 
 	authHandler := handler.NewAuth(f)
 	router.Auth(app, authHandler)
-	
+
 	return &Restful{
 		app: fiber.New(),
 	}
 }
 
-func (s *Restful) Start(address string){
+func (s *Restful) Start(address string) {
 	if err := s.app.Listen(env.Conf.CurrentApp.RestfulAddress); err != nil {
 		log.Logger.Fatal(err.Error())
 	}
@@ -44,5 +44,7 @@ func (s *Restful) Start(address string){
 func (s *Restful) Stop() error {
 	if err := s.app.Shutdown(); err != nil {
 		log.Logger.Error(err.Error())
-}
+	}
 
+	return nil
+}

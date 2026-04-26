@@ -12,9 +12,14 @@ type currentApp struct {
 	RestfulAddress string
 }
 
+type Postgres struct {
+	DSN string
+}
+
 type Config struct {
-	RabbitMQ *rabbitmq
+	RabbitMQ   *rabbitmq
 	CurrentApp *currentApp
+	Postgres   *Postgres
 }
 
 var Conf *Config
@@ -26,7 +31,12 @@ func Load() {
 	currentAppConf := new(currentApp)
 	currentAppConf.RestfulAddress = os.Getenv("RESTFUL_ADDRESS")
 
+	postgresConf := new(Postgres)
+	postgresConf.DSN = os.Getenv("POSTGRES_DSN")
+
 	Conf = &Config{
-		RabbitMQ: rabbitmqConf,
+		RabbitMQ:   rabbitmqConf,
+		CurrentApp: currentAppConf,
+		Postgres:   postgresConf,
 	}
 }
